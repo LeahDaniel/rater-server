@@ -1,0 +1,28 @@
+[
+    {
+        "model": "raterapi.game",
+        "pk": 1,
+        "fields": {
+            "title": "Wingspan",
+            "designer": "Stonemaier",
+            "description": "A game with birds",
+            "year_released": 2019,
+            "number_of_players": 5,
+            "hours_playtime": 1,
+            "min_age_recommended": 14 
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 2,
+        "fields": {
+            "title": "Ticket to Ride",
+            "designer": "Days of Wonder",
+            "description": "Trains!!",
+            "year_released": 2010,
+            "number_of_players": 5,
+            "hours_playtime": 2,
+            "min_age_recommended": 15 
+        }
+    }
+]
