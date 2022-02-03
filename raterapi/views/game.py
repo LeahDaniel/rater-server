@@ -4,7 +4,8 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from raterapi.models import Game
+from raterapi.models import Game, Category
+from rest_framework.decorators import action
 
 
 class GameView(ViewSet):
@@ -34,6 +35,50 @@ class GameView(ViewSet):
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
 
+    def create(self, request):
+        """Handle POST operations
+
+        Returns:
+            Response -- JSON serialized game instance
+        """
+
+        game = Game.objects.create(
+            title=request.data["title"],
+            description=request.data["description"],
+            designer=request.data["designer"],
+            year_released=request.data["yearReleased"],
+            number_of_players=request.data["numberOfPlayers"],
+            hours_playtime=request.data["hoursPlaytime"],
+            min_age_recommended=request.data["minAgeRecommended"]
+        )
+
+        game.categories.add(request.data["categoryId"])
+
+        serializer = GameSerializer(game)
+        return Response(serializer.data)
+
+    def update(self, request, pk):
+        """Handle PUT requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        game = Game.objects.get(pk=pk)
+        game.title = request.data["title"]
+        game.description = request.data["description"]
+        game.designer = request.data["designer"]
+        game.year_released = request.data["yearReleased"]
+        game.number_of_players = request.data["numberOfPlayers"]
+        game.hours_playtime = request.data["hoursPlaytime"]
+        game.min_age_recommended = request.data["minAgeRecommended"]
+
+        category = Category.objects.get(pk=request.data["categoryId"])
+        game.categories.add(category)
+
+        game.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
 class GameSerializer(serializers.ModelSerializer):
