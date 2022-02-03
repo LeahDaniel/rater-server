@@ -9,7 +9,7 @@
             "year_released": 2019,
             "number_of_players": 5,
             "hours_playtime": 1,
-            "min_age_recommended": 14 
+            "min_age_recommended": 14
         }
     },
     {
@@ -22,7 +22,7 @@
             "year_released": 2010,
             "number_of_players": 5,
             "hours_playtime": 2,
-            "min_age_recommended": 15 
+            "min_age_recommended": 15
         }
     }
 ]

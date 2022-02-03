@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
 from raterapi.models import Game, Category
+from django.contrib.auth.models import User
 from rest_framework.decorators import action
 
 
@@ -42,6 +43,8 @@ class GameView(ViewSet):
             Response -- JSON serialized game instance
         """
 
+        user = User.objects.get(pk=request.auth.user.id)
+        
         game = Game.objects.create(
             title=request.data["title"],
             description=request.data["description"],
@@ -49,8 +52,10 @@ class GameView(ViewSet):
             year_released=request.data["yearReleased"],
             number_of_players=request.data["numberOfPlayers"],
             hours_playtime=request.data["hoursPlaytime"],
-            min_age_recommended=request.data["minAgeRecommended"]
+            min_age_recommended=request.data["minAgeRecommended"],
+            user=user
         )
+
 
         game.categories.add(request.data["categoryId"])
 
