@@ -1,5 +1,5 @@
-from django.contrib.auth.models import User
 from django.db import models
+
 
 class GameCategory(models.Model):
     game = models.ForeignKey("Game", on_delete=models.CASCADE)
