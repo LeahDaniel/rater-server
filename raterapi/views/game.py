@@ -44,7 +44,7 @@ class GameView(ViewSet):
         """
 
         user = User.objects.get(pk=request.auth.user.id)
-        
+
         game = Game.objects.create(
             title=request.data["title"],
             description=request.data["description"],
@@ -55,7 +55,6 @@ class GameView(ViewSet):
             min_age_recommended=request.data["minAgeRecommended"],
             user=user
         )
-
 
         game.categories.add(request.data["categoryId"])
 
@@ -92,4 +91,5 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         depth = 1
-        fields = "__all__"
+        fields = ('id', 'title', 'description', 'designer', 'year_released', 'number_of_players',
+                  'hours_playtime', 'min_age_recommended', 'categories', 'average_rating', 'user')

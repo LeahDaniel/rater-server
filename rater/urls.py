@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
-from raterapi.views import GameView, login_user, register_user, CategoryView, ReviewView
+from raterapi.views import GameView, login_user, register_user, CategoryView, ReviewView, RatingView
 from rest_framework import routers
 
 
@@ -24,6 +24,7 @@ router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'games', GameView, 'game')
 router.register(r'reviews', ReviewView, 'review')
 router.register(r'categories', CategoryView, 'category')
+router.register(r'ratings', RatingView, 'rating')
 
 
 urlpatterns = [
