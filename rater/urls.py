@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
-from raterapi.views import GameView, login_user, register_user, CategoryView, ReviewView, RatingView
+from raterapi.views import GameView, login_user, register_user, CategoryView, ReviewView, RatingView, PictureView
 from rest_framework import routers
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 router = routers.DefaultRouter(trailing_slash=False)
@@ -25,6 +27,7 @@ router.register(r'games', GameView, 'game')
 router.register(r'reviews', ReviewView, 'review')
 router.register(r'categories', CategoryView, 'category')
 router.register(r'ratings', RatingView, 'rating')
+router.register(r'pictures', PictureView, 'picture')
 
 
 urlpatterns = [
@@ -33,4 +36,4 @@ urlpatterns = [
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
