@@ -25,7 +25,7 @@ class PictureView(ViewSet):
 
         serializer = PictureSerializer(pictures, many=True)
         return Response(serializer.data)
-    
+
     def create(self, request):
         """Handle POST operations
 

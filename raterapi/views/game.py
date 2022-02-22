@@ -55,7 +55,7 @@ class GameView(ViewSet):
         """
 
         user = User.objects.get(pk=request.auth.user.id)
-
+        
         game = Game.objects.create(
             title=request.data["title"],
             description=request.data["description"],
@@ -70,7 +70,7 @@ class GameView(ViewSet):
         game.categories.add(request.data["categoryId"])
 
         serializer = GameSerializer(game)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk):
         """Handle PUT requests for a game
