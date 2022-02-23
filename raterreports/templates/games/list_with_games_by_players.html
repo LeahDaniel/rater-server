@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gamer Rater Reports</title>
+  </head>
+  <body>
+    <h1>Games With More Than 5 Players</h1>
+
+    {% for game in game_list_by_players %}
+        <h2>{{ game.title }}</h2>
+        <p>Player Count:{{ game.number_of_players}}</p>
+    {% endfor %}
+  </body>
+</html>

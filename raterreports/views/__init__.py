@@ -1,3 +1,4 @@
 from .games.topgamesbyrating import TopGamesByRatingList
 from .games.bottomgamesbyrating import BottomGamesByRatingList
 from .categories.categorycountbygame import CategoryCountList
+from .games.gamesbyplayers import GamesByPlayersList
