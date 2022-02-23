@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gamer Rater Reports</title>
+  </head>
+  <body>
+    <h1>Category Counts</h1>
+
+    {% for category in categorycount_list %}
+        <p>{{ category.label }} : {{ category.game_count }}</p>
+    {% endfor %}
+  </body>
+</html>

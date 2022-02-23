@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'raterapi',
+    'raterreports'
 ]
 
 # THIS IS NEW
