@@ -1,8 +1,8 @@
 from django.urls import path
 
 from .views import (BottomGamesByRatingList, CategoryCountList,
-                    GamesByPlayersList, TopGameByReviewList,
-                    TopGamesByRatingList)
+                    CategoryKidGameList, GamesByPlayersList,
+                    TopGameByReviewList, TopGamesByRatingList)
 
 urlpatterns = [
     path('reports/topgames', TopGamesByRatingList.as_view()),
@@ -10,4 +10,5 @@ urlpatterns = [
     path('reports/categorycount', CategoryCountList.as_view()),
     path('reports/groupgames', GamesByPlayersList.as_view()),
     path('reports/mostreviewed', TopGameByReviewList.as_view()),
+    path('reports/kidgames', CategoryKidGameList.as_view()),
 ]

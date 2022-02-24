@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>LevelUp Reports</title>
+  </head>
+  <body>
+    <h1>Games suitable for kids by category</h1>
+
+    {% for category in kidgame_list %}
+        <h2>{{ category.label }}</h2>
+        <ol>
+            {% for game in category.games %}
+            <li>
+                <p>{{game.title}}</p>
+            </li>
+            {% endfor %}
+        </ol>
+    {% endfor %}
+  </body>
+</html>
